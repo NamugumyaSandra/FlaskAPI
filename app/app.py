@@ -23,12 +23,12 @@ def get_questions():
     response.headers['Location'] = 'questions/'
     return jsonify(questions), 200
 
-# @app.route('/app/v1/questions', methods=['POST'])
-# def add_question():
-#     questions.append(request.get_json())
-#     response = Response('', 201,mimetype="application/json")
-#     response.headers['Location'] = 'questions/'+ str(request.json['questionId'])
-#     return jsonify(questions),201
+@app.route('/app/v1/questions', methods=['POST'])
+def add_question():
+    questions.append(request.get_json())
+    response = Response('', 201,mimetype="application/json")
+    response.headers['Location'] = 'questions/'+ str(request.json['questionId'])
+    return jsonify(questions),201
 
 # @app.route('/app/v1/questions/<int:questionId>', methods=['GET'])
 # def get_a_question(questionId):
