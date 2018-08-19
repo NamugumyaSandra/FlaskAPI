@@ -37,13 +37,13 @@ def get_a_question(questionId):
     response.headers['Location'] = '<int:questionId>/'+ str(request.json['questionId'])
     return jsonify({'question': qn[0]}), 200
 
-# @app.route('/app/v1/questions/<int:questionId>/answers', methods=['POST'])
-# def add_answer(questionId):
-#     qn = [question for question in questions if question['questionId']==questionId]
-#     qn.append(request.get_json())
-#     response = Response('', 201, mimetype='application/json')
-#     response.headers['Location'] = 'answers/'+ str(request.json['questionId'])
-#     return jsonify({'question': qn[1]})
+@app.route('/app/v1/questions/<int:questionId>/answers', methods=['POST'])
+def add_answer(questionId):
+    qn = [question for question in questions if question['questionId']==questionId]
+    qn.append(request.get_json())
+    response = Response('', 201, mimetype='application/json')
+    response.headers['Location'] = 'answers/'+ str(request.json['questionId'])
+    return jsonify({'question': qn[1]})
   
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
