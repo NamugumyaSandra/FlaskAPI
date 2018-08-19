@@ -1,0 +1,5 @@
+/instance
+/venv
+/app/.pytest_cache
+/run.py
+/.pytest_cache/v
