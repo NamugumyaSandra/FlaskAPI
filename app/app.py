@@ -30,12 +30,12 @@ def add_question():
     response.headers['Location'] = 'questions/'+ str(request.json['questionId'])
     return jsonify(questions),201
 
-# @app.route('/app/v1/questions/<int:questionId>', methods=['GET'])
-# def get_a_question(questionId):
-#     qn = [question for question in questions if question['questionId']==questionId]
-#     response = Response('', 200, mimetype='application/json')
-#     response.headers['Location'] = '<int:questionId>/'+ str(request.json['questionId'])
-#     return jsonify({'question': qn[0]}), 200
+@app.route('/app/v1/questions/<int:questionId>', methods=['GET'])
+def get_a_question(questionId):
+    qn = [question for question in questions if question['questionId']==questionId]
+    response = Response('', 200, mimetype='application/json')
+    response.headers['Location'] = '<int:questionId>/'+ str(request.json['questionId'])
+    return jsonify({'question': qn[0]}), 200
 
 # @app.route('/app/v1/questions/<int:questionId>/answers', methods=['POST'])
 # def add_answer(questionId):
